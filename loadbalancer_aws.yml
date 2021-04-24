@@ -1,0 +1,32 @@
+- hosts: localhost
+  vars_files:
+          - files.yml
+  tasks:          
+  - name: "launching loadbalaner in aws cloud "
+    ec2:
+       assign_public_ip: yes
+       aws_access_key: "{{ x }}"
+       aws_secret_key: "{{ y }}"
+       count: 1
+       wait: yes
+       wait_timeout: 50
+       image: ami-0a9d27a9f4f5c0efc
+       group_id: sg-53ab7134
+       instance_tags:
+               Name: loadbalancer
+               country: IN
+               ENV: PROD
+       instance_type: t2.micro
+       key_name: prabalkey
+       region: ap-south-1
+       state: present
+       vpc_subnet_id: subnet-2339304b
+    register: lb
+  - name: "update lb inventory"
+    blockinfile:
+          path: /root/ansible_ws/aws_ws/inventory/lb
+          create: yes
+          block: |
+                [loadbalancer]
+                {{ lb.instances[0].public_ip }}  
+
