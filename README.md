@@ -10,7 +10,9 @@ Haproxy is been configured in loadbalancer instance and httpd is been configured
 
 Tools used :
 1) ANSIBLE
-2) AWS CLOUD
+2) Apache httpd server
+3) HAproxy
+4) AWS CLOUD
  
 --> This project solves the problem of making inventory manually
 
