@@ -12,7 +12,9 @@ Tools used :
 1) ANSIBLE
 2) Apache httpd server
 3) HAproxy
-4) AWS CLOUD
+
+Public Cloud Use:
+1) AWS CLOUD
  
 --> This project solves the problem of making inventory manually
 
